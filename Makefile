@@ -3,4 +3,4 @@ build:
 	ld -o boot.bin --oformat binary -e init -Ttext 0x7c00 -o boot.bin boot.o
 
 start:
-	qemu-system-i386 -fda boot.bin
+	qemu-system-i386 -boot a -fda boot.bin

@@ -18,6 +18,11 @@ print_loop:
 
 done:
 	hlt
+
+reset_disk:
+	mov $0x00, %ah
+	mov $0x00, %dl
+	int $0x13
 	
 msg:
 	.asciz "Hello, World!"

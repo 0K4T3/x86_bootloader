@@ -1,6 +1,8 @@
 build:
 	as -o boot.o boot.S
-	ld --oformat binary --entry init -Ttext 0x7c00 --output boot.img boot.o
+	as -o kernel.o kernel.S
+#	ld --script boot.ld --output boot.img boot.o
+	ld --script boot.ld --output kernel.img boot.o kernel.o
 
 start:
 	qemu-system-i386 -boot a -fda boot.img

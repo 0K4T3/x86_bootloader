@@ -5,12 +5,13 @@ init:
 	mov $msg, %si
 	call print
 	call reset_disk
-	jc print_error
 	jnc print_success
+	jc print_error
 	call done
-	
+
+
 print:
-	mov $0xe, %ah
+	mov $0x0e, %ah
 	jmp print_loop
 	ret
 	
@@ -44,13 +45,13 @@ done:
 	hlt
 	
 msg:
-	.asciz "Hello, World!\n"
+	.asciz "Hello, World!\n\r"
 
 success_msg:
-	.asciz "Success!\n"
+	.asciz "Success to reset disk!\n\r"
 
 error_msg:
-	.asciz "Error!\n"
+	.asciz "Error to reset disk!\n\r"
 	
 .fill 510-(.-init), 1, 0
 .word 0xaa55

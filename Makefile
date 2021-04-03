@@ -1,11 +1,11 @@
 build:
-	as -o boot.o boot.S
-	as -o kernel.o kernel.S
-#	ld --script boot.ld --output boot.img boot.o
-	ld --script boot.ld --output kernel.img boot.o kernel.o
+	nasm -f bin -o boot.o boot.S
+	# as -o kernel.o kernel.S
+	# ld --script boot.ld --output boot.img boot.o
+	# ld --script boot.ld --output kernel.img boot.o kernel.o
 
 start:
-	qemu-system-i386 -boot a -fda boot.img
+	qemu-system-i386 -boot a -fda boot.o
 
 build-kernel:
 	as -o boot.o boot-kernel.S

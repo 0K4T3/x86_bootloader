@@ -1,7 +1,6 @@
 print:
 	mov $0x0e, %ah
 	jmp print_loop
-	ret
 
 print_loop:
 	lodsb
